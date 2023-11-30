@@ -51,7 +51,11 @@ Module.symvers
 Mkfile.old
 dkms.conf
 **/.DS_Store
+
+#docker容器新产生内容
+.cache/*
 .github/*
 .gnupg/*
 .vscode-server/*
 .gitconfig
+.bash_history

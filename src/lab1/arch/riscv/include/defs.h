@@ -3,12 +3,17 @@
 
 #include "types.h"
 
-#define csr_read(csr)                       \
-({                                          \
-    register uint64 __v;                    \
-    /* unimplemented */                     \
-    __v;                                    \
-})
+#define csr_read(csr)                  \
+	({                                 \
+		register uint64 __v;           \
+		/* unimplemented */            \
+		asm volatile("csrr %0," #csr   \
+					 : "=r"(__v)       \
+					 :                 \
+					 : "memory");      \
+		/* 从寄存器中获取值 */ \
+		__v;                     \
+	})
 
 #define csr_write(csr, val)                         \
 ({                                                  \
